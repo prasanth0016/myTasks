@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .s-hand {
+            width: 5px;
+            height: 150px;
+            background: linear-gradient(red, white,black);
+            font-size: 14px;
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 100px;
+        }
+
+        .clock {
+            height: 200px;
+            width: 200px;
+            border-radius: 100px;
+            border: 2px solid lightseagreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .m-hand {
+            width: 10px;
+            height: 90px;
+            background: linear-gradient(green, white,black);
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="clock">
+            <div class="s-hand" id="sechand">^</div>
+            <div class="m-hand" id="minhand">^</div>
+        </div>
+        <span id="sectxt"></span>
+        <span id="min-txt"></span>
+    </div>
+    <script>
+        let sechand = document.getElementById("sechand")
+        let minhand = document.getElementById("minhand")
+        let minhandDege = 0
+        let mintxt = document.getElementById("min-txt")
+        let sectxt = document.getElementById("sectxt")
+        let secs = 0
+        let mins = 0
+        let dege = 0
+        let mincount = 360
+
+        setInterval(function () {
+            dege += 6
+            secs += 1
+            sechand.style.transform = `rotate(${dege}deg)`;
+            sectxt.innerHTML = `${secs}:`
+            if (dege === mincount) {
+                mins += 1
+                mintxt.innerHTML = `${mins}:`
+                mincount += 360
+                minhandDege += 6
+                minhand.style.transform = `rotate(${minhandDege}deg)`
+            }
+
+        }, 1000)
+    </script>
+</body>
+
+</html>
