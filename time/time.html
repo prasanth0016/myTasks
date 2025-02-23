@@ -34,7 +34,7 @@
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            
+
         }
 
         .m-hand {
@@ -54,15 +54,13 @@
             position: absolute;
 
         }
-
-        
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="clock">
-           
+
             <div class="s-hand" id="sechand">S</div>
             <div class="m-hand" id="minhand">M</div>
             <div class="h-hand" id="hourhand">H</div>
@@ -72,28 +70,47 @@
         <span id="hour-txt">0 hrs</span>
     </div>
     <script>
-        let date=new Date()
+        let date = new Date()
         let sechand = document.getElementById("sechand")
-        sechand.style.transform=`rotate(${date.getSeconds()*6}deg)`
+        sechand.style.transform = `rotate(${date.getSeconds() * 6}deg)`
         let minhand = document.getElementById("minhand")
-        minhand.style.transform=`rotate(${date.getMinutes()*6}deg)`
+        minhand.style.transform = `rotate(${date.getMinutes() * 6}deg)`
         let hourhand = document.getElementById("hourhand")
-        hourhand.style.transform=`rotate(${(date.getHours()-12)*30}deg)`
-        let hourhandDege = (date.getHours()-12)*30
-        let minhandDege = date.getMinutes()*6
+          if(date.getHours()>12){
+        hourhand.style.transform = `rotate(${(date.getHours() - 12) * 30}deg)`
+          }else{
+        hourhand.style.transform = `rotate(${(date.getHours()) * 30}deg)`
+
+          }
+        let hourhandDege = 0
+        if(date.getHours()>12){
+            hourhandDege =(date.getHours()-12)*30
+        }else{
+            hourhandDege = date.getHours()*30
+        }
+        let minhandDege = date.getMinutes() * 6
         let hourtxt = document.getElementById("hour-txt")
-            hourtxt.innerHTML=`${date.getHours()-12} hrs`
+        if (date.getHours() > 12) {
+            hourtxt.innerHTML = `${date.getHours() - 12} hrs`
+        } else {
+            hourtxt.innerHTML = `${date.getHours()} hrs`
+        }
         let mintxt = document.getElementById("min-txt")
-          mintxt.innerHTML=`${date.getMinutes()} mins:`
+        mintxt.innerHTML = `${date.getMinutes()} mins:`
         let sectxt = document.getElementById("sectxt")
-         sectxt.innerHTML=`${date.getHours()-12} secs:`
-        let secs = date.getSeconds()-1
+        sectxt.innerHTML = `${date.getHours()} secs:`
+        let secs = date.getSeconds() - 1
         let mins = date.getMinutes()
-        let hours = date.getHours()-12
-        let dege = date.getSeconds()*6
+        let hours = 0
+        if(date.getHours()>12){
+            hours = date.getHours()-12
+        }else{
+            hours = date.getHours()
+        }
+        let dege = date.getSeconds() * 6
         let mincount = 360
 
-         setInterval(function () {
+        setInterval(function () {
             dege += 6
             secs += 1
             if (secs === 60) { secs = 0 }
@@ -104,6 +121,9 @@
                 if (mins === 60) {
                     mins = 0
                     hours += 1
+                    if(hours>12){
+                        hours = 1
+                    }
                     hourtxt.innerHTML = `${hours} hrs`
 
                 }
