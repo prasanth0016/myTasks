@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        * {
+            font-family: arial;
+            color: white;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .font-size-24 {
+            font-size: 24px;
+        }
+
         .s-hand {
             width: 5px;
             height: 150px;
@@ -20,6 +33,9 @@
             justify-content: center;
             align-items: center;
             column-gap: 5px;
+            background-color: lightblue;
+            border-radius: 50px;
+            box-shadow: 5px 5px 5px yellow;
         }
 
         .clock {
@@ -30,10 +46,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url("../images/download.png");
+            background-image: url(../images/download.png);
             background-position: center;
-            background-size: cover;
             background-repeat: no-repeat;
+            background-size: cover;
 
         }
 
@@ -60,14 +76,13 @@
 <body>
     <div class="container">
         <div class="clock">
-
             <div class="s-hand" id="sechand">S</div>
             <div class="m-hand" id="minhand">M</div>
             <div class="h-hand" id="hourhand">H</div>
         </div>
-        <span id="sectxt">0 secs:</span>
-        <span id="min-txt">0 mins:</span>
-        <span id="hour-txt">0 hrs</span>
+        <span class="font-size-24" id="sectxt">0 secs:</span>
+        <span class="font-size-24" id="min-txt">0 mins:</span>
+        <span class="font-size-24" id="hour-txt">0 hrs</span>
     </div>
     <script>
         let date = new Date()
@@ -76,17 +91,17 @@
         let minhand = document.getElementById("minhand")
         minhand.style.transform = `rotate(${date.getMinutes() * 6}deg)`
         let hourhand = document.getElementById("hourhand")
-          if(date.getHours()>12){
-        hourhand.style.transform = `rotate(${(date.getHours() - 12) * 30}deg)`
-          }else{
-        hourhand.style.transform = `rotate(${(date.getHours()) * 30}deg)`
+        if (date.getHours() > 12) {
+            hourhand.style.transform = `rotate(${(date.getHours() - 12) * 30}deg)`
+        } else {
+            hourhand.style.transform = `rotate(${(date.getHours()) * 30}deg)`
 
-          }
+        }
         let hourhandDege = 0
-        if(date.getHours()>12){
-            hourhandDege =(date.getHours()-12)*30
-        }else{
-            hourhandDege = date.getHours()*30
+        if (date.getHours() > 12) {
+            hourhandDege = (date.getHours() - 12) * 30
+        } else {
+            hourhandDege = date.getHours() * 30
         }
         let minhandDege = date.getMinutes() * 6
         let hourtxt = document.getElementById("hour-txt")
@@ -102,9 +117,9 @@
         let secs = date.getSeconds() - 1
         let mins = date.getMinutes()
         let hours = 0
-        if(date.getHours()>12){
-            hours = date.getHours()-12
-        }else{
+        if (date.getHours() > 12) {
+            hours = date.getHours() - 12
+        } else {
             hours = date.getHours()
         }
         let dege = date.getSeconds() * 6
@@ -121,7 +136,7 @@
                 if (mins === 60) {
                     mins = 0
                     hours += 1
-                    if(hours>12){
+                    if (hours > 12) {
                         hours = 1
                     }
                     hourtxt.innerHTML = `${hours} hrs`
