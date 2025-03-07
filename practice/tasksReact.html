@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- CHANGE THEME -->
+    <button id="changeTheme">change theme</button><br><br>
+
+    <!-- CART VALUE UPDATE -->
+    <button onclick="plusCartCount()" id="plusBtn">+</button>
+    cart-<span id="cartCount">0</span>
+    <button onclick="minusCartCount()" id="minusBtn">-</button><br><br>
+
+    <!-- INPUT VALUE TO LOG -->
+    <br>input <input type="text" id="textBox" placeholder="enter somthing to log"><br><br>
+
+    <script>
+
+
+        // enter value to log
+        let textBox = document.getElementById("textBox");
+        textBox.addEventListener('input', () => {
+            console.log(textBox.value);
+        })
+
+        //cart count
+        let cartCount = 0
+        let cartCountSpan = document.getElementById("cartCount");
+        function plusCartCount() {
+            cartCount += 1;
+            cartCountSpan.textContent = cartCount;
+
+        }
+        function minusCartCount() {
+            if (cartCount == 0) {
+                return;
+            }
+            cartCount -= 1;
+            cartCountSpan.textContent = cartCount;
+
+        }
+
+        // task 1
+        for (let i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                console.log('React js');
+
+            } else if (i % 3 == 0) {
+                console.log('React');
+
+            } else if (i % 5 == 0) {
+                console.log('Js');
+
+            } else {
+                console.log(i);
+
+            }
+        }
+
+
+        // changeTheme
+        let changeThemeBtn = document.getElementById("changeTheme");
+        let mode = "white";
+        changeThemeBtn.addEventListener('click', function changeTheme() {
+            if (mode === "white") {
+                mode = "black"
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+
+            }
+            else {
+                mode = "white"
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+
+
+            }
+        })
+
+        // object destructuring
+        const person = {
+            name: "prasanth",
+            age: 28,
+            city: "nellore"
+        }
+        const person1 = {
+            name: "pg",
+            age: 9,
+            city: "nellore"
+        }
+        const { name: nameoftheperson, city: cityoftheperson } = person
+        const { name, ...a } = person
+        console.log(name,"destructuring rest operator",a);
+
+        console.log(nameoftheperson + '\n' + cityoftheperson,"person props");
+        for (let key in person1) {
+            console.log(person1[key],"person1 props using for in loop");
+
+        }
+
+        // spread operator
+        let firstArray = ["hello","world"]
+        let second = ["hello","world","welcome",...firstArray]
+        console.log(second,"spread operartor");
+        
+
+
+        //  extract particular property from objects which are inside an array
+        let objectArray = [
+            {
+                name: "pg",
+                age: 9,
+                city: "nellore"
+            },
+            {
+                name: "bhaskar",
+                age: 9,
+                city: "pileru"
+            },
+            {
+                name: "nani",
+                age: 9,
+                city: "nellore"
+            }        ]
+        let newArray = objectArray.map(a => a.name )
+        console.log(newArray,"map method");
+
+       //filtering the words which are containing letter "a" from an array
+        let courses = ["html","css","java","javaScript","react","angular","datascience"]
+        let filterArray = courses.filter(ele=>ele.includes("a"))
+        console.log(filterArray,"filter method");
+
+         // npm npx
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggle practice</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .line {
+            width: 30px;
+            height: 3px;
+            border-radius: 10px;
+            background-color: rgb(199, 199, 218);
+        }
+
+        /* .line:hover{
+        } */
+        .line-main-div {
+            display: flex;
+            flex-direction: column;
+            width: 40px;
+            height: 25px;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            margin-left: 15px;
+            padding: 2px;
+            transition-duration: 0.2s;
+
+        }
+
+        .line-main-div:hover {
+            border: 2px solid rgb(190, 181, 198);
+            box-shadow: 2px 2px 4px gainsboro;
+            background-color: black;
+            transform: rotate(360deg);
+
+
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            background-color: green;
+            height: 60px;
+        }
+
+        .toggle-bar {
+            width: 300px;
+            height: 600px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="nav">
+
+        <div class="line-main-div" id="toggle-btn">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div id="toggle-ath"></div>
+    
+
+    <script>
+        let toggleBtn = document.getElementById("toggle-btn")
+        let toggleAth = document.getElementById("toggle-ath")
+        let toggleBar;
+        let body = document.getElementById("body")
+        
+        
+        toggleBtn.addEventListener('click', () => {
+            toggleBar = document.createElement("div")
+            toggleBar.classList.add("toggle-bar");
+            
+
+            if (toggleAth.innerHTML === "") {
+                toggleAth.appendChild(toggleBar);
+
+            } else {
+                toggleAth.innerHTML = "";
+            }
+        })
+
+    </script>
+</body>
+
+</html>
