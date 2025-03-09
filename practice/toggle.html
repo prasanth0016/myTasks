@@ -57,6 +57,47 @@
             height: 600px;
             background-color: blue;
         }
+
+        .fruitWord {
+            color: white;
+            font-family: arial;
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+
+        .f {
+            font-size: 50px;
+            font-weight: bold;
+            font-family: arial;
+            color: white;
+        }
+
+        .rm-a-ul {
+            text-decoration: none;
+        }
+
+        .logo {
+            margin-left: 15px;
+            /* transform: rotate(-3deg); */
+            border: 1.5px solid transparent;
+            border-radius: 10px;
+        }
+        .logo:hover{
+            border: 1.5px solid black;
+
+        }
+        .m{
+            color: black;
+            font-size: 50px;
+            font-family: arial;
+             font-style: italic;
+             
+        }
+        .arket{
+            color: black;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -68,21 +109,23 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
+        <div class="logo"><a class="rm-a-ul" href="#"><span class="f">f</span><span class="fruitWord">ruit</span>
+                <span class="m">M</span><span class="arket">arket</span></a></div>
     </div>
     <div id="toggle-ath"></div>
-    
+
 
     <script>
         let toggleBtn = document.getElementById("toggle-btn")
         let toggleAth = document.getElementById("toggle-ath")
         let toggleBar;
         let body = document.getElementById("body")
-        
-        
+
+
         toggleBtn.addEventListener('click', () => {
             toggleBar = document.createElement("div")
             toggleBar.classList.add("toggle-bar");
-            
+
 
             if (toggleAth.innerHTML === "") {
                 toggleAth.appendChild(toggleBar);
