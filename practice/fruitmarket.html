@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>toggle practice</title>
+    <title>fruitMarket</title>
     <style>
         * {
             margin: 0px;
@@ -52,10 +52,27 @@
             height: 60px;
         }
 
-        .toggle-bar {
-            width: 300px;
-            height: 600px;
-            background-color: blue;
+        .toggle-ath {
+            display: none;
+            width: 150px;
+            background-color: lightgray;
+            position: absolute;
+
+        }
+
+        .sideBar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+
+
+        }
+
+        .sideBarLinks {
+            color: black;
+            font-weight: bold;
         }
 
         .fruitWord {
@@ -83,27 +100,44 @@
             border: 1.5px solid transparent;
             border-radius: 10px;
         }
-        .logo:hover{
+
+        .logo:hover {
             border: 1.5px solid black;
 
         }
-        .m{
+
+        .m {
             color: black;
             font-size: 50px;
             font-family: arial;
-             font-style: italic;
-             
+            font-style: italic;
         }
-        .arket{
+
+        .arket {
             color: black;
             font-weight: bold;
+        }
+
+        .border-on-hover {
+            border: 1.5px solid transparent;
+        }
+
+        .border-on-hover:hover {
+            border: 1.5px solid black;
         }
     </style>
 </head>
 
 <body id="body">
+    <div class="toggle-ath" id="toggle-ath">
+        <a href="https://prasanth0016.github.io/myTasks/clock/clock.html" target="_blank"
+            class="rm-a-ul sideBarLinks border-on-hover">Clock</a>
+        <a href="../animation/animation.html" target="_blank" class="rm-a-ul sideBarLinks border-on-hover">Animation</a>
+        <a href="#" class="rm-a-ul sideBarLinks border-on-hover">Signup</a>
+        <a href="#" class="rm-a-ul sideBarLinks border-on-hover">login</a>
+        <a href="#" class="rm-a-ul sideBarLinks border-on-hover">Services</a>
+    </div>
     <div class="nav">
-
         <div class="line-main-div" id="toggle-btn">
             <div class="line"></div>
             <div class="line"></div>
@@ -112,27 +146,21 @@
         <div class="logo"><a class="rm-a-ul" href="#"><span class="f">f</span><span class="fruitWord">ruit</span>
                 <span class="m">M</span><span class="arket">arket</span></a></div>
     </div>
-    <div id="toggle-ath"></div>
 
 
     <script>
-        let toggleBtn = document.getElementById("toggle-btn")
-        let toggleAth = document.getElementById("toggle-ath")
-        let toggleBar;
-        let body = document.getElementById("body")
+        let toggleBtn = document.getElementById("toggle-btn");
+        let toggleAth = document.getElementById("toggle-ath");
 
 
-        toggleBtn.addEventListener('click', () => {
-            toggleBar = document.createElement("div")
-            toggleBar.classList.add("toggle-bar");
 
+        toggleBtn.addEventListener('click', function (event) {
+            toggleAth.classList.toggle("sideBar");
+            event.stopPropagation();
 
-            if (toggleAth.innerHTML === "") {
-                toggleAth.appendChild(toggleBar);
-
-            } else {
-                toggleAth.innerHTML = "";
-            }
+        })
+        document.addEventListener('click', function () {
+            toggleAth.classList.remove("sideBar");
         })
 
     </script>
